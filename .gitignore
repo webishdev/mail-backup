@@ -2,3 +2,4 @@ data/
 roundcube/
 LOG_imapsync/
 .env
+*.tar.gz

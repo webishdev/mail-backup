@@ -16,3 +16,4 @@ Install [Docker](https://www.docker.com/products/docker-desktop/)
 - Start the container environment with `./start.sh` (will not start detached and block the terminal)
 - In another terminal start `./sync.sh`
 - Login into Roundcube at http://localhost:9002/ with the user configured as `IMAP_USER` and the password configured as `LOCAL_IMAP_PASSWORD`
+- If necessary the `./backup.data.sh` script can be used to create a backup of the data folder
