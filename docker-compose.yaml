@@ -1,0 +1,29 @@
+services:
+  mail-client:
+    image: roundcube/roundcubemail:1.6.11-apache
+    depends_on:
+      - mail-server
+    volumes:
+      - ./roundcube/db/sqlite:/var/roundcube/db
+    ports:
+      - 9002:80
+    environment:
+      - ROUNDCUBEMAIL_DB_TYPE=sqlite
+      - ROUNDCUBEMAIL_SKIN=elastic
+      - ROUNDCUBEMAIL_DEFAULT_HOST=mail-server
+      - ROUNDCUBEMAIL_SMTP_SERVER=mail-server
+  mail-server:
+    build:
+      context: .
+      args:
+        IMAP_USER: ${IMAP_USER}
+        LOCAL_IMAP_PASSWORD: ${LOCAL_IMAP_PASSWORD}
+    hostname: mail-server
+    environment:
+      OVERRIDE_HOSTNAME: mail-server.de
+    volumes:
+      - "./data:/var/mail"
+    ports:
+      # - 8080:8080
+      - 9003:143
+      - 9004:993

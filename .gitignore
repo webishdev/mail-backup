@@ -1,0 +1,4 @@
+data/
+roundcube/
+LOG_imapsync/
+.env
