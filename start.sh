@@ -1,5 +1,12 @@
 #!/bin/bash
 
+ENV_FILE=".env"
+
+if [ ! -f "$ENV_FILE" ]; then
+  echo "Error: $ENV_FILE not found." >&2
+  exit 1
+fi
+
 mkdir -p data
 mkdir -p roundcube
 
