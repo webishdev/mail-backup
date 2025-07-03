@@ -7,6 +7,8 @@ services:
       - ./roundcube/db/sqlite:/var/roundcube/db
     ports:
       - 9002:80
+    networks:
+      - main
     environment:
       - ROUNDCUBEMAIL_DB_TYPE=sqlite
       - ROUNDCUBEMAIL_SKIN=elastic
@@ -19,11 +21,14 @@ services:
         IMAP_USER: ${IMAP_USER}
         LOCAL_IMAP_PASSWORD: ${LOCAL_IMAP_PASSWORD}
     hostname: mail-server
+    networks:
+      - main
     environment:
       OVERRIDE_HOSTNAME: mail-server.de
+      ENABLE_QUOTAS: 0
     volumes:
       - "./data:/var/mail"
-    ports:
-      # - 8080:8080
-      - 9003:143
-      - 9004:993
+networks:
+  main:
+    name: mail-backup-network
+    external: true

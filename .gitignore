@@ -1,5 +1,6 @@
 data/
 roundcube/
-LOG_imapsync/
+imapsync/
 .env
 *.tar.gz
+.cache
