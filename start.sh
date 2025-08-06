@@ -23,4 +23,4 @@ echo
 echo "Access Roundcube at http://localhost:9002"
 echo
 
-docker compose -p backup-mailserver -f docker-compose.yaml up --build --force-recreate
+docker compose -f docker-compose.yaml up --build --force-recreate
